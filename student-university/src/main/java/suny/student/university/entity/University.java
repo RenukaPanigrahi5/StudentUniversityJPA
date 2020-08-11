@@ -20,12 +20,29 @@ public class University {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
 	private String univName;
 	
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
 	@OneToMany(mappedBy = "university", cascade = CascadeType.ALL, orphanRemoval = true)
-	@JsonBackReference
-	private List<Student> student = new ArrayList<>();
+	private List<Student> students = new ArrayList<>();
 	
+
+
+	public University() {
+		super();
+	}
+
 
 	public University(String univName) {
 		super();
@@ -43,18 +60,13 @@ public class University {
 	}
 
 
-	public List<Student> getStudent() {
-		return student;
+	public List<Student> getStudents() {
+		return students;
 	}
 
 
-	public void setStudent(List<Student> student) {
-		this.student = student;
-	}
-
-
-	public University() {
-	
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 
 }

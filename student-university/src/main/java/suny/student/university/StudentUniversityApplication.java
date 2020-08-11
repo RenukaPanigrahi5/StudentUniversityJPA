@@ -7,6 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import suny.student.university.entity.Student;
 import suny.student.university.entity.University;
@@ -31,8 +34,17 @@ public class StudentUniversityApplication {
 		List<Student> ie = new ArrayList<>();
 		ie.add(s1);
 		ie.add(s2);
-		d.setStudent(ie);
-	    repo.save(d);
+		d.setStudents(ie);
+	    //repo.save(d);
+	    //repo.save(d1);
+	    ObjectMapper mapper = new ObjectMapper();
+	     String jsonString;
+		try {
+			jsonString = mapper.writeValueAsString(d);
+			System.out.println(jsonString);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
 	}
 	}
 	

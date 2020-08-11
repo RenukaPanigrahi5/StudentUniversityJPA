@@ -7,5 +7,5 @@ import suny.student.university.entity.Student;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
-
+   Student findByStudentName(String studentName);
 }

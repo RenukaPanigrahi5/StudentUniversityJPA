@@ -21,10 +21,24 @@ public class Student {
 	private Long id;
 	private String studentName;
 	
+
+	public Student(String studentName) {
+		super();
+		this.studentName = studentName;
+	}
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "university_id")
 	@JsonBackReference
 	private University university;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Student(String studentName, University university) {
 		super();
